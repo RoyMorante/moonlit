@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A soft, secure encryption and decryption workspace.">
+    <title>Moonlit Cipher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <main class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="index.html" aria-label="Moonlit Cipher home">
+                <span class="brand-mark">✦</span>
+                <span>moonlit <strong>cipher</strong></span>
+            </a>
+            <div class="status-pill"><span class="status-dot"></span> private by design</div>
+        </header>
+
+        <section class="hero">
+            <div class="eyebrow"><span></span> your little secret keeper</div>
+            <h1>Keep your words<br><em>just between us.</em></h1>
+            <p>A pretty little place to tuck away your thoughts. Encrypt something sweet, or unlock a message waiting for you.</p>
+        </section>
+
+        <section class="workspace" aria-label="Cipher workspace">
+            <div class="mode-tabs" role="tablist" aria-label="Cipher mode">
+                <button type="button" class="mode-tab active" data-mode="encrypt" role="tab" aria-selected="true">
+                    <span class="tab-icon">✧</span> Encrypt
+                </button>
+                <button type="button" class="mode-tab" data-mode="decrypt" role="tab" aria-selected="false">
+                    <span class="tab-icon">♡</span> Decrypt
+                </button>
+            </div>
+
+            <form class="cipher-form" id="cipher-form" novalidate>
+                <input type="hidden" name="mode" id="mode-input" value="encrypt">
+                <div class="form-grid">
+                    <div class="field-group message-field">
+                        <div class="field-heading">
+                            <label for="message" id="message-label">Your message</label>
+                            <span class="character-count"><span id="character-count">0</span> chars</span>
+                        </div>
+                        <textarea id="message" name="message" placeholder="Type something only you should read..." spellcheck="true" required></textarea>
+                    </div>
+
+                    <div class="field-group passphrase-field">
+                        <label for="cipher">Cipher method</label>
+                        <select id="cipher" name="cipher">
+                            <option value="caesar" selected>Caesar cipher</option>
+                            <option value="vigenere">Vigenere cipher</option>
+                        </select>
+                        <label for="key" id="key-label">Shift amount</label>
+                        <div class="input-with-action">
+                            <input type="text" id="key" name="key" value="" placeholder="e.g. 3" required>
+                        </div>
+                        <p class="field-hint" id="key-hint"><span>⌁</span> Use any whole-number shift</p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="primary-button" type="submit" id="submit-button">
+                        <span id="submit-label">Create ciphertext</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+                    <button class="clear-button" type="button" id="clear-button">Clear all</button>
+                </div>
+            </form>
+
+            <section class="result-panel hidden" id="result-panel" aria-live="polite">
+                <div class="result-heading">
+                    <div>
+                        <span class="result-kicker" id="result-kicker">Your secret is ready</span>
+                        <h2 id="result-title">A little magic, encoded.</h2>
+                    </div>
+                    <button type="button" class="copy-button" id="copy-button" data-copy-target="result-text">Copy <span>⧉</span></button>
+                </div>
+                <textarea class="result-text" id="result-text" readonly></textarea>
+            </section>
+
+            <div class="error-message hidden" id="error-message" role="alert">
+                <span>!</span><span id="error-text"></span>
+            </div>
+        </section>
+
+        <footer class="footer-note">
+            <span>made for quiet thoughts</span>
+            <span class="footer-sparkle">✦</span>
+            <span>classical cipher studio</span>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

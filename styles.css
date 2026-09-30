@@ -95,6 +95,7 @@ h2 { margin: 6px 0 0; font-family: 'Playfair Display', serif; font-size: 22px; f
 .error-message span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; color: white; background: #c87f9f; font-weight: 700; }
 .footer-note { display: flex; justify-content: center; gap: 14px; margin-top: 24px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 .footer-sparkle { color: var(--rose); }
+.hidden { display: none !important; }
 
 @keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 680px) {
